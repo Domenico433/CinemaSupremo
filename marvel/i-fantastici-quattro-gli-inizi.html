@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>CinemaSupremo - I Fantastici Quattro: Gli Inizi</title>
+        <link rel="icon" type="image/png" href="immagini/favicon.png" />
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet" />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TE7HT4HSRD"></script>
+        <script src="js/gtag.js"></script>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-family: 'Orbitron', sans-serif;
+                background: #0d0d0d;
+                color: #ddd;
+                min-height: 100vh;
+                line-height: 1.6;
+            }
+            header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background: #121212;
+                padding: 15px 30px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+                z-index: 1000;
+            }
+            nav {
+                max-width: 1200px;
+                margin: auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .logo a {
+                color: #fff;
+                font-size: 1.8rem;
+                font-weight: bold;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+            .logo a:hover {
+                color: #e23636;
+            }
+            .menu {
+                list-style: none;
+                display: flex;
+                gap: 25px;
+            }
+            .menu li a {
+                color: #ddd;
+                text-decoration: none;
+                font-weight: 500;
+                position: relative;
+                padding: 5px 0;
+                transition: color 0.3s;
+            }
+            .menu li a::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                background: #e23636;
+                bottom: 0;
+                left: 0;
+                transition: width 0.3s;
+            }
+            .menu li a:hover::after,
+            .menu li a.active::after {
+                width: 100%;
+            }
+            .hamburger {
+                display: none;
+                flex-direction: column;
+                gap: 5px;
+                width: 25px;
+                height: 20px;
+                cursor: pointer;
+            }
+            .hamburger span {
+                height: 3px;
+                background: #ddd;
+                border-radius: 2px;
+                transition: all 0.3s;
+            }
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+            @media (max-width: 768px) {
+                .menu {
+                    display: none;
+                    position: absolute;
+                    top: 60px;
+                    right: 30px;
+                    background: #222;
+                    flex-direction: column;
+                    padding: 15px;
+                    border-radius: 8px;
+                }
+                .menu.show {
+                    display: flex;
+                }
+                .hamburger {
+                    display: flex;
+                }
+            }
+            .back-button-top {
+                position: absolute;
+                top: 140px;
+                left: 530px;
+                z-index: 900;
+                transition: top 0.3s ease;
+            }
+            .back-button-top button {
+                background: #e23636;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+                padding: 10px 12px;
+                border-radius: 50%;
+                line-height: 1;
+                transition: background 0.3s;
+            }
+            .back-button-top button:hover {
+                background: #ff4c4c;
+            }
+            @media (max-width: 768px) {
+                .back-button-top {
+                    display: none;
+                }
+            }
+            .hero {
+                margin: 120px auto 40px auto;
+                max-width: 900px;
+                padding: 20px;
+                background: linear-gradient(to right, #151515, #300000);
+                border-radius: 15px;
+                text-align: center;
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+            }
+            .hero img {
+                max-width: 300px;
+                margin-bottom: 10px;
+            }
+            .hero p {
+                color: #ccc;
+                font-size: 1.1rem;
+                max-width: 700px;
+                margin: 0 auto;
+            }
+            .details {
+                max-width: 700px;
+                margin: 30px auto;
+                background: #1a1a1a;
+                border-radius: 15px;
+                padding: 30px 35px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+                color: #bbb;
+                font-size: 1.05rem;
+            }
+            .details h2 {
+                color: #e23636;
+                margin-bottom: 25px;
+                font-size: 1.9rem;
+                text-align: center;
+            }
+            .details p {
+                margin-bottom: 14px;
+            }
+            .gallery {
+                max-width: 900px;
+                margin: 50px auto;
+                padding: 25px 30px;
+                background: #1a1a1a;
+                border-radius: 15px;
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+                color: #e23636;
+            }
+            .gallery h2 {
+                margin-bottom: 25px;
+                font-size: 2rem;
+                text-align: center;
+            }
+            .gallery-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 20px;
+            }
+            .gallery-grid img {
+                width: 100%;
+                border-radius: 12px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+                transition: transform 0.3s ease;
+                cursor: pointer;
+            }
+            .gallery-grid img:hover {
+                transform: scale(1.07);
+            }
+            footer {
+                background: #121212;
+                text-align: center;
+                padding: 20px;
+                font-size: 0.9rem;
+                color: #555;
+                margin-top: 40px;
+            }
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 2000;
+                left: 0;
+                top: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: rgba(0, 0, 0, 0.9);
+                justify-content: center;
+                align-items: center;
+            }
+            .modal-content {
+                max-width: 90vw;
+                max-height: 90vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .modal-content img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain;
+            }
+            .modal-close {
+                position: absolute;
+                top: 15px;
+                right: 40px;
+                color: #fff;
+                font-size: 2rem;
+                cursor: pointer;
+            }
+            .modal-arrow {
+                position: absolute;
+                top: 50%;
+                color: #fff;
+                font-size: 3rem;
+                cursor: pointer;
+                transform: translateY(-50%);
+                background: rgba(0, 0, 0, 0.4);
+                border-radius: 50%;
+                padding: 10px;
+            }
+            .modal-arrow.left {
+                left: 20px;
+            }
+            .modal-arrow.right {
+                right: 20px;
+            }
+            @media (max-width: 768px) {
+                .gallery-grid img {
+                    pointer-events: none;
+                    opacity: 0.9;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="logo">
+                    <a href="index">CinemaSupremo</a>
+                </div>
+                <ul class="menu">
+                    <li><a href="index">Home</a></li>
+                    <li><a href="marvel" class="active">Marvel</a></li>
+                    <li><a href="dc">DC</a></li>
+                </ul>
+                <div class="hamburger" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </header>
+        <div class="back-button-top">
+            <button onclick="history.back()" aria-label="Torna indietro">⮌</button>
+        </div>
+        <main>
+            <section class="hero">
+                <img src="../immagini/marvel/marvel-loghi/i-fantastici-quattro-gli-inizi-logo.png" alt="Logo Fantastici Quattro" />
+                <p>Il film che segna l'attesissimo ingresso dei Fantastici Quattro nel Marvel Cinematic Universe.</p>
+            </section>
+            <section class="details">
+                <h2>Dettagli</h2>
+                <p><strong>Genere:</strong> Supereroi, Azione, Fantascienza.</p>
+                <p><strong>Data di uscita:</strong> 23 Luglio 2025 (Italia).</p>
+                <p><strong>Durata:</strong> 114 Minuti (1h 54m).</p>
+                <p><strong>Regista:</strong> Matt Shakman.</p>
+                <p><strong>Cast:</strong> Pedro Pascal, Vanessa Kirby, Joseph Quinn e Ebon Moss‑Bachrach.</p>
+                <p><strong>Trama:</strong> Il team dei Fantastici Quattro affronta la loro prima grande avventura nel Marvel Cinematic Universe, in un viaggio che mescola scienza, famiglia e minacce cosmiche.</p>
+            </section>
+            <section class="gallery">
+                <h2>Galleria Immagini</h2>
+                <div class="gallery-grid" id="gallery">
+                    <img src="/immagini/marvel/i-fantastici-quattro-gli-inizi-immagine-01.png" alt="Immagine 01" />
+                    <img src="/immagini/marvel/i-fantastici-quattro-gli-inizi-immagine-02.png" alt="Immagine 02" />
+                    <img src="/immagini/marvel/i-fantastici-quattro-gli-inizi-immagine-03.png" alt="Immagine 03" />
+                </div>
+            </section>
+        </main>
+        <div class="modal" id="modal">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <span class="modal-arrow left" id="modalPrev">&#10094;</span>
+            <span class="modal-arrow right" id="modalNext">&#10095;</span>
+            <div class="modal-content">
+                <img src="" alt="" id="modalImage" />
+            </div>
+        </div>
+        <footer>
+            © 2025 CinemaSupremo - Tutti i diritti riservati
+        </footer>
+        <script>
+            function toggleMenu() {
+                document.querySelector('.menu').classList.toggle('show');
+                document.querySelector('.hamburger').classList.toggle('active');
+            }
+            const gallery = document.getElementById('gallery');
+            const modal = document.getElementById('modal');
+            const modalImage = document.getElementById('modalImage');
+            const modalClose = document.getElementById('modalClose');
+            const modalPrev = document.getElementById('modalPrev');
+            const modalNext = document.getElementById('modalNext');
+            const images = Array.from(gallery.querySelectorAll('img'));
+            let currentIndex = 0;
+
+            function openModal(i) {
+                if (window.innerWidth <= 768) return;
+                currentIndex = i;
+                modalImage.src = images[i].src;
+                modal.style.display = 'flex';
+            }
+            function closeModal() {
+                modal.style.display = 'none';
+            }
+            function showPrev() {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                modalImage.src = images[currentIndex].src;
+            }
+            function showNext() {
+                currentIndex = (currentIndex + 1) % images.length;
+                modalImage.src = images[currentIndex].src;
+            }
+            images.forEach((img, i) => img.addEventListener('click', () => openModal(i)));
+            modalClose.addEventListener('click', closeModal);
+            modalPrev.addEventListener('click', showPrev);
+            modalNext.addEventListener('click', showNext);
+            modal.addEventListener('click', e => {
+                if (e.target === modal) closeModal();
+            });
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') closeModal();
+                if (e.key === 'ArrowLeft') showPrev();
+                if (e.key === 'ArrowRight') showNext();
+            });
+        </script>
+    </body>
+</html>

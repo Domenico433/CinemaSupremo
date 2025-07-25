@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CinemaSupremo - Marvel</title>
     <link rel="icon" type="image/png" href="immagini/favicon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TE7HT4HSRD"></script>
     <script src="js/gtag.js"></script>
     <style>
@@ -23,10 +22,12 @@
         }
         header {
             position: fixed;
-            top: 0; left: 0; width: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
             background: #121212;
             padding: 15px 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.9);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .9);
             z-index: 1000;
         }
         nav {
@@ -69,14 +70,16 @@
             width: 0;
             height: 2px;
             background: #e23636;
-            bottom: 0; left: 0;
+            bottom: 0;
+            left: 0;
             transition: width .3s;
         }
         .hamburger {
             display: none;
             flex-direction: column;
             gap: 5px;
-            width: 25px; height: 20px;
+            width: 25px;
+            height: 20px;
             cursor: pointer;
         }
         .hamburger span {
@@ -87,15 +90,15 @@
             transform-origin: center;
         }
         .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px,5px);
+            transform: rotate(45deg) translate(5px, 5px);
         }
         .hamburger.active span:nth-child(2) {
             opacity: 0;
         }
         .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px,-5px);
+            transform: rotate(-45deg) translate(5px, -5px);
         }
-        @media(max-width:768px) {
+        @media (max-width: 768px) {
             .menu {
                 display: none;
                 position: absolute;
@@ -115,7 +118,7 @@
         }
         .hero {
             margin-top: 80px;
-            background: linear-gradient(to right,#151515,#300000);
+            background: linear-gradient(to right, #151515, #300000);
             padding: 60px 20px;
             text-align: center;
         }
@@ -144,7 +147,7 @@
             color: #e23636;
             cursor: pointer;
             border-radius: 30px;
-            transition: all 0.3s ease;
+            transition: all .3s ease;
         }
         .filters button.active,
         .filters button:hover {
@@ -176,9 +179,11 @@
             background: #1a1a1a;
             padding: 20px;
             border-radius: 15px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, .6);
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: transform .3s ease;
+            text-decoration: none;
+            display: block;
         }
         .card:hover {
             transform: translateY(-5px);
@@ -200,7 +205,7 @@
             background: #121212;
             text-align: center;
             padding: 20px;
-            font-size: 0.9rem;
+            font-size: .9rem;
             color: #555;
         }
     </style>
@@ -215,7 +220,9 @@
                 <li><a href="dc">DC</a></li>
             </ul>
             <div class="hamburger" onclick="toggleMenu()">
-                <span></span><span></span><span></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </nav>
     </header>
@@ -225,36 +232,36 @@
     </section>
     <section class="filters">
         <button onclick="filterReleases('all')" class="active">Tutti</button>
-        <button onclick="filterReleases('film')">Film</button>
-        <button onclick="filterReleases('serie')">Serie</button>
+        <button onclick="filterReleases('film')">Cinema</button>
+        <button onclick="filterReleases('serie')">Televisione</button>
     </section>
     <section class="releases">
         <div class="year-group" data-year="2025">
             <h2>Anno 2025</h2>
-            <div class="card film"><img src="immagini/marvel-loghi/i-fantastici-quattro-gli-inizi-logo.png" /><h3>I Fantastici Quattro: Gli Inizi</h3><p>Film Live-Action - Adesso al Cinema</p></div>
-            <div class="card serie"><img src="immagini/marvel-loghi/eyes-of-wakanda-logo.png" /><h3>Eyes Of Wakanda</h3><p>Serie Animata - 1 Agosto 2025</p></div>
-            <div class="card serie"><img src="immagini/marvel-loghi/marvel-zombies-logo.png" /><h3>Marvel Zombies</h3><p>Serie Animata - 3 Ottobre 2025</p></div>
-            <div class="card serie"><img src="immagini/marvel-loghi/wonder-man-logo.png" /><h3>Wonder Man</h3><p>Serie Live-Action - Dicembre 2025</p></div>
+            <a href="marvel/i-fantastici-quattro-gli-inizi" class="card film"><img src="immagini/marvel/marvel-loghi/i-fantastici-quattro-gli-inizi-logo.png"><h3>I Fantastici Quattro: Gli Inizi</h3><p>Film Live-Action - Adesso al Cinema</p></a>
+            <a href="eyes-of-wakanda.html" class="card serie"><img src="immagini/marvel/marvel-loghi/eyes-of-wakanda-logo.png"><h3>Eyes Of Wakanda</h3><p>Serie Animata - 1 Agosto 2025</p></a>
+            <a href="marvel-zombies.html" class="card serie"><img src="immagini/marvel/marvel-loghi/marvel-zombies-logo.png"><h3>Marvel Zombies</h3><p>Serie Animata - 3 Ottobre 2025</p></a>
+            <a href="wonder-man.html" class="card serie"><img src="immagini/marvel/marvel-loghi/wonder-man-logo.png"><h3>Wonder Man</h3><p>Serie Live-Action - Dicembre 2025</p></a>
         </div>
         <div class="year-group" data-year="2026">
             <h2>Anno 2026</h2>
-            <div class="card serie"><img src="immagini/marvel-loghi/daredevil-rinascita-logo.png" /><h3>Daredevil Rinascita Stagione 2</h3><p>Serie Live-Action - Marzo 2026</p></div>
-            <div class="card serie"><img src="https://placehold.co/512x288?text=Punisher" /><h3>Punisher</h3><p>Special Presentation - 2026</p></div>
-            <div class="card film"><img src="immagini/marvel-loghi/spider-man-brand-new-day-logo.png" /><h3>Spider-Man: Brand New Day</h3><p>Film Live-Action - 31 Luglio 2026</p></div>
-            <div class="card serie"><img src="https://placehold.co/512x288?text=Vision+Quest" /><h3>Vision Quest</h3><p>Serie Live-Action - 2026</p></div>
-            <div class="card film"><img src="immagini/marvel-loghi/avengers-doomsday-logo.png" /><h3>Avengers Doomsday</h3><p>Film Live-Action - 18 Dicembre 2026</p></div>
+            <a href="daredevil-rinascita.html" class="card serie"><img src="immagini/marvel/marvel-loghi/daredevil-rinascita-logo.png"><h3>Daredevil Rinascita Stagione 2</h3><p>Serie Live-Action - Marzo 2026</p></a>
+            <a href="punisher.html" class="card serie"><img src="https://placehold.co/512x288?text=Punisher"><h3>Punisher</h3><p>Special Presentation - 2026</p></a>
+            <a href="spider-man-brand-new-day.html" class="card film"><img src="immagini/marvel/marvel-loghi/spider-man-brand-new-day-logo.png"><h3>Spider-Man: Brand New Day</h3><p>Film Live-Action - 31 Luglio 2026</p></a>
+            <a href="vision-quest.html" class="card serie"><img src="https://placehold.co/512x288?text=Vision+Quest"><h3>Vision Quest</h3><p>Serie Live-Action - 2026</p></a>
+            <a href="avengers-doomsday.html" class="card film"><img src="immagini/marvel/marvel-loghi/avengers-doomsday-logo.png"><h3>Avengers Doomsday</h3><p>Film Live-Action - 18 Dicembre 2026</p></a>
         </div>
         <div class="year-group" data-year="2027">
             <h2>Anno 2027</h2>
-            <div class="card film"><img src="immagini/marvel-loghi/untitled-logo.png" /><h3>Untitled</h3><p>Film Live-Action - 23 Luglio 2027</p></div>
-            <div class="card film"><img src="immagini/marvel-loghi/avengers-secret-wars-logo.png" /><h3>Avengers Secret Wars</h3><p>Film Live-Action - 17 Dicembre 2027</p></div>
+            <a href="untitled.html" class="card film"><img src="immagini/marvel-loghi/untitled-logo.png"><h3>Untitled</h3><p>Film Live-Action - 23 Luglio 2027</p></a>
+            <a href="avengers-secret-wars.html" class="card film"><img src="immagini/marvel/marvel-loghi/avengers-secret-wars-logo.png"><h3>Avengers Secret Wars</h3><p>Film Live-Action - 17 Dicembre 2027</p></a>
         </div>
         <div class="year-group" data-year="2028">
             <h2>Anno 2028</h2>
-            <div class="card film"><img src="immagini/marvel-loghi/untitled-logo.png" /><h3>Untitled</h3><p>Film Live-Action - 18 Febbraio 2028</p></div>
-            <div class="card film"><img src="immagini/marvel-loghi/untitled-logo.png" /><h3>Untitled</h3><p>Film Live-Action - 5 Maggio 2028</p></div>
-            <div class="card film"><img src="immagini/marvel-loghi/untitled-logo.png" /><h3>Untitled</h3><p>Film Live-Action - 10 Novembre 2028</p></div>
-            <div class="card film"><img src="immagini/marvel-loghi/untitled-logo.png" /><h3>Untitled</h3><p>Film Live-Action - 15 Dicembre 2028</p></div>
+            <a href="untitled.html" class="card film"><img src="immagini/marvel/marvel-loghi/untitled-logo.png"><h3>Untitled</h3><p>Film Live-Action - 18 Febbraio 2028</p></a>
+            <a href="untitled.html" class="card film"><img src="immagini/marvel/marvel-loghi/untitled-logo.png"><h3>Untitled</h3><p>Film Live-Action - 5 Maggio 2028</p></a>
+            <a href="untitled.html" class="card film"><img src="immagini/marvel/marvel-loghi/untitled-logo.png"><h3>Untitled</h3><p>Film Live-Action - 10 Novembre 2028</p></a>
+            <a href="untitled.html" class="card film"><img src="immagini/marvel/marvel-loghi/untitled-logo.png"><h3>Untitled</h3><p>Film Live-Action - 15 Dicembre 2028</p></a>
         </div>
     </section>
     <footer>
