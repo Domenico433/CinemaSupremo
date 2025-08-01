@@ -4,11 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>CinemaSupremo - Home</title>
-    <link rel="icon" type="image/png" href="immagini/favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet" />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TE7HT4HSRD"></script>
-    <script src="js/gtag.js"></script>
     <style>
         * {
             margin: 0;
@@ -116,9 +114,6 @@
             .hamburger {
                 display: flex;
             }
-            .trailers-grid {
-                grid-template-columns: 1fr !important;
-            }
         }
         .hero {
             margin-top: 80px;
@@ -137,30 +132,6 @@
             max-width: 800px;
             margin: 0 auto;
         }
-        .trailers-section {
-            padding: 40px 20px;
-            text-align: center;
-            max-width: 1200px;
-            margin: 0 auto 60px;
-        }
-        .trailers-section h3 {
-            font-size: 2rem;
-            margin-bottom: 30px;
-            color: #9b59b6;
-        }
-        .trailers-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            justify-content: center;
-        }
-        .trailers-grid iframe {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(155, 89, 182, 0.5);
-        }
         footer {
             background: #121212;
             text-align: center;
@@ -168,24 +139,14 @@
             font-size: 0.9rem;
             color: #555;
         }
-        .trailer-item {
-            text-align: center;
-        }
-        .trailer-title {
-            margin-top: 8px;
-            font-size: 1rem;
-            color: #9b59b6;
-            font-weight: 600;
-            font-family: 'Orbitron', sans-serif;
-        }
     </style>
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo"><a href="index">CinemaSupremo</a></div>
+            <div class="logo"><a href="https://cinemasupremo.it">CinemaSupremo</a></div>
             <ul class="menu">
-                <li><a href="index" class="active">Home</a></li>
+                <li><a href="https://cinemasupremo.it" class="active">Home</a></li>
                 <li><a href="marvel">Marvel</a></li>
                 <li><a href="dc">DC</a></li>
             </ul>
@@ -197,31 +158,6 @@
     <section class="hero">
         <h2>Benvenuto su CinemaSupremo</h2>
         <p>Scopri tutte le ultime uscite su film e serie Marvel &amp; DC.</p>
-    </section>
-    <section class="trailers-section">
-        <h3>Ultimi Trailers</h3>
-        <div class="trailers-grid">
-            <div class="trailer-item">
-                <iframe src="https://www.youtube.com/embed/HGE_zR8yhUE" allowfullscreen></iframe>
-                <p class="trailer-title">I Fantastici Quattro: Gli Inizi | Trailer Finale</p>
-            </div>
-            <div class="trailer-item">
-                <iframe src="https://www.youtube.com/embed/H8n9GndufaQ" allowfullscreen></iframe>
-                <p class="trailer-title">Superman | Trailer Ufficiale</p>
-            </div>
-            <div class="trailer-item">
-                <iframe src="https://www.youtube.com/embed/oh4v714SEXk" allowfullscreen></iframe>
-                <p class="trailer-title">I Fantastici Quattro: Gli Inizi | Trailer Ufficiale</p>
-            </div>
-            <div class="trailer-item">
-                <iframe src="https://www.youtube.com/embed/YPMw1fX-SnE" allowfullscreen></iframe>
-                <p class="trailer-title">I Fantastici Quattro: Gli Inizi | Teaser Trailer</p>
-            </div>
-            <div class="trailer-item">
-                <iframe src="https://www.youtube.com/embed/rMjUzq8Tlls" allowfullscreen></iframe>
-                <p class="trailer-title">Superman | Teaser Trailer</p>
-            </div>
-        </div>
     </section>
     <footer>
         &copy; 2025 CinemaSupremo. Tutti i diritti riservati.
