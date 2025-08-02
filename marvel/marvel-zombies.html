@@ -242,7 +242,9 @@
             <li><a href="../marvel" class="active">Marvel</a></li>
             <li><a href="../dc">DC</a></li>
         </ul>
-        <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
     </nav>
 </header>
 <main>
@@ -271,16 +273,16 @@
     <section class="gallery">
         <h2>Galleria Immagini</h2>
         <div class="gallery-grid" id="gallery">
-            <img src="marvel-immagini/marvel-zombies/immagine-01.png">
-            <img src="marvel-immagini/marvel-zombies/immagine-02.png">
-            <img src="marvel-immagini/marvel-zombies/immagine-03.png">
+            <img src="marvel-immagini/marvel-zombies/immagine-01.png" alt="Marvel Zombies 1">
+            <img src="marvel-immagini/marvel-zombies/immagine-02.png" alt="Marvel Zombies 2">
+            <img src="marvel-immagini/marvel-zombies/immagine-03.png" alt="Marvel Zombies 3">
         </div>
     </section>
 </main>
-<div class="modal" id="modal">
-    <span class="modal-close" id="modalClose">&times;</span>
-    <span class="modal-arrow left" id="modalPrev">&#10094;</span>
-    <span class="modal-arrow right" id="modalNext">&#10095;</span>
+<div class="modal" id="modal" aria-hidden="true" role="dialog" aria-label="Immagine ingrandita">
+    <span class="modal-close" id="modalClose" role="button" aria-label="Chiudi">&times;</span>
+    <span class="modal-arrow left" id="modalPrev" role="button" aria-label="Immagine precedente">&#10094;</span>
+    <span class="modal-arrow right" id="modalNext" role="button" aria-label="Immagine successiva">&#10095;</span>
     <div class="modal-content">
         <img src="" alt="" id="modalImage" />
     </div>
@@ -291,6 +293,7 @@
         document.querySelector('.menu').classList.toggle('show');
         document.querySelector('.hamburger').classList.toggle('active');
     }
+
     const gallery = document.getElementById('gallery');
     const modal = document.getElementById('modal');
     const modalImage = document.getElementById('modalImage');
@@ -301,29 +304,48 @@
     let currentIndex = 0;
 
     function openModal(i) {
-        if (window.innerWidth <= 768) return;
+        if (window.innerWidth <= 768) return; // Non aprire su mobile per UX
         currentIndex = i;
         modalImage.src = images[i].src;
+        modalImage.alt = images[i].alt;
         modal.style.display = 'flex';
+        modal.setAttribute('aria-hidden', 'false');
     }
-    function closeModal() { modal.style.display = 'none'; }
+
+    function closeModal() {
+        modal.style.display = 'none';
+        modalImage.src = '';
+        modalImage.alt = '';
+        modal.setAttribute('aria-hidden', 'true');
+    }
+
     function showPrev() {
         currentIndex = (currentIndex - 1 + images.length) % images.length;
         modalImage.src = images[currentIndex].src;
+        modalImage.alt = images[currentIndex].alt;
     }
+
     function showNext() {
         currentIndex = (currentIndex + 1) % images.length;
         modalImage.src = images[currentIndex].src;
+        modalImage.alt = images[currentIndex].alt;
     }
+
     images.forEach((img, i) => img.addEventListener('click', () => openModal(i)));
     modalClose.addEventListener('click', closeModal);
     modalPrev.addEventListener('click', showPrev);
     modalNext.addEventListener('click', showNext);
-    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+
+    modal.addEventListener('click', e => {
+        if (e.target === modal) closeModal();
+    });
+
     document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') closeModal();
-        if (e.key === 'ArrowLeft') showPrev();
-        if (e.key === 'ArrowRight') showNext();
+        if (modal.style.display === 'flex') {
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowLeft') showPrev();
+            if (e.key === 'ArrowRight') showNext();
+        }
     });
 </script>
 </body>

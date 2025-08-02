@@ -234,97 +234,115 @@
     </style>
 </head>
 <body>
-<header>
-    <nav>
-        <div class="logo"><a href="https://cinemasupremo.it">CinemaSupremo</a></div>
-        <ul class="menu">
-            <li><a href="https://cinemasupremo.it">Home</a></li>
-            <li><a href="../marvel">Marvel</a></li>
-            <li><a href="../dc" class="active">DC</a></li>
-        </ul>
-        <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
-    </nav>
-</header>
-<main>
-    <section class="hero">
-        <div class="back-button-top">
-            <button onclick="history.back()" aria-label="Torna indietro">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10"/>
-                    <polyline points="12 8 8 12 12 16"/>
-                    <line x1="16" y1="12" x2="8" y2="12"/>
-                </svg>
-            </button>
+    <header>
+        <nav>
+            <div class="logo"><a href="https://cinemasupremo.it">CinemaSupremo</a></div>
+            <ul class="menu">
+                <li><a href="https://cinemasupremo.it">Home</a></li>
+                <li><a href="../marvel">Marvel</a></li>
+                <li><a href="../dc" class="active">DC</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="back-button-top">
+                <button onclick="history.back()" aria-label="Torna indietro">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 8 8 12 12 16"/>
+                        <line x1="16" y1="12" x2="8" y2="12"/>
+                    </svg>
+                </button>
+            </div>
+            <img src="dc-immagini/peacemaker-stagione-2/peacemaker-stagione-2-logo.png" alt="Logo Peacemaker" />
+            <p>La serie che segna il clamoroso ritorno dell'antieroe più scorretto dell'universo DC, tra azione esplosiva e satira tagliente.</p>
+        </section>
+        <section class="details">
+            <h2>Dettagli</h2>
+            <p>Genere: Supereroi, Azione, Commedia.</p>
+            <p>Data di uscita: 21 Agosto 2025 (Italia).</p>
+            <p>Durata: 8 Episodi da 45 Minuti (Circa).</p>
+            <p>Regista: James Gunn.</p>
+            <p>Cast: John Cena, Danielle Brooks, Freddie Stroma, Steve Agee, Jennifer Holland, Robert Patrick e altri.</p>
+            <p>Trama: Dopo gli eventi della prima stagione, Peacemaker si ritrova coinvolto in una nuova missione ancora più folle, che mette alla prova le sue convinzioni e il suo concetto di “pace a ogni costo”. Tra alleanze improbabili, nemici bizzarri e crisi esistenziali, l’antieroe DC torna più esplosivo e controverso che mai.</p>
+        </section>
+        <section class="gallery">
+            <h2>Galleria Immagini</h2>
+            <div class="gallery-grid" id="gallery">
+                <img src="dc-immagini/peacemaker-stagione-2/immagine-01.png">
+                <img src="dc-immagini/peacemaker-stagione-2/immagine-02.png">
+                <img src="dc-immagini/peacemaker-stagione-2/immagine-03.png">
+            </div>
+        </section>
+    </main>
+    <div class="modal" id="modal">
+        <span class="modal-close" id="modalClose">&times;</span>
+        <span class="modal-arrow left" id="modalPrev">&#10094;</span>
+        <span class="modal-arrow right" id="modalNext">&#10095;</span>
+        <div class="modal-content">
+            <img src="" alt="" id="modalImage" />
         </div>
-        <img src="dc-immagini/peacemaker-stagione-2/peacemaker-stagione-2-logo.png" alt="Logo Peacemaker" />
-        <p>La serie che segna il clamoroso ritorno dell'antieroe più scorretto dell'universo DC, tra azione esplosiva e satira tagliente.</p>
-    </section>
-    <section class="details">
-        <h2>Dettagli</h2>
-        <p>Genere: Supereroi, Azione, Commedia.</p>
-        <p>Data di uscita: 21 Agosto 2025 (Italia).</p>
-        <p>Durata: 8 Episodi da 45 Minuti (Circa).</p>
-        <p>Regista: James Gunn.</p>
-        <p>Cast: John Cena, Danielle Brooks, Freddie Stroma, Steve Agee, Jennifer Holland, Robert Patrick e altri.</p>
-        <p>Trama: Dopo gli eventi della prima stagione, Peacemaker si ritrova coinvolto in una nuova missione ancora più folle, che mette alla prova le sue convinzioni e il suo concetto di “pace a ogni costo”. Tra alleanze improbabili, nemici bizzarri e crisi esistenziali, l’antieroe DC torna più esplosivo e controverso che mai.</p>
-    </section>
-    <section class="gallery">
-        <h2>Galleria Immagini</h2>
-        <div class="gallery-grid" id="gallery">
-            <img src="dc-immagini/peacemaker-stagione-2/immagine-01.png">
-            <img src="dc-immagini/peacemaker-stagione-2/immagine-02.png">
-            <img src="dc-immagini/peacemaker-stagione-2/immagine-03.png">
-        </div>
-    </section>
-</main>
-<div class="modal" id="modal">
-    <span class="modal-close" id="modalClose">&times;</span>
-    <span class="modal-arrow left" id="modalPrev">&#10094;</span>
-    <span class="modal-arrow right" id="modalNext">&#10095;</span>
-    <div class="modal-content">
-        <img src="" alt="" id="modalImage" />
     </div>
-</div>
-<footer>© 2025 CinemaSupremo - Tutti i diritti riservati</footer>
-<script>
-    function toggleMenu() {
-        document.querySelector('.menu').classList.toggle('show');
-        document.querySelector('.hamburger').classList.toggle('active');
-    }
-    const gallery = document.getElementById('gallery');
-    const modal = document.getElementById('modal');
-    const modalImage = document.getElementById('modalImage');
-    const modalClose = document.getElementById('modalClose');
-    const modalPrev = document.getElementById('modalPrev');
-    const modalNext = document.getElementById('modalNext');
-    const images = Array.from(gallery.querySelectorAll('img'));
-    let currentIndex = 0;
+    <footer>© 2025 CinemaSupremo - Tutti i diritti riservati</footer>
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            const hamburger = document.querySelector('.hamburger');
+            menu.classList.toggle('show');
+            hamburger.classList.toggle('active');
+        }
 
-    function openModal(i) {
-        if (window.innerWidth <= 768) return;
-        currentIndex = i;
-        modalImage.src = images[i].src;
-        modal.style.display = 'flex';
-    }
-    function closeModal() { modal.style.display = 'none'; }
-    function showPrev() {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        modalImage.src = images[currentIndex].src;
-    }
-    function showNext() {
-        currentIndex = (currentIndex + 1) % images.length;
-        modalImage.src = images[currentIndex].src;
-    }
-    images.forEach((img, i) => img.addEventListener('click', () => openModal(i)));
-    modalClose.addEventListener('click', closeModal);
-    modalPrev.addEventListener('click', showPrev);
-    modalNext.addEventListener('click', showNext);
-    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-    document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') closeModal();
-        if (e.key === 'ArrowLeft') showPrev();
-        if (e.key === 'ArrowRight') showNext();
-    });
-</script>
+        const galleryImages = document.querySelectorAll('#gallery img');
+        const modal = document.getElementById('modal');
+        const modalImage = document.getElementById('modalImage');
+        const modalClose = document.getElementById('modalClose');
+        const modalPrev = document.getElementById('modalPrev');
+        const modalNext = document.getElementById('modalNext');
+
+        let currentIndex = 0;
+
+        galleryImages.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                currentIndex = index;
+                openModal(img.src, img.alt);
+            });
+        });
+
+        function openModal(src, alt) {
+            modal.style.display = 'flex';
+            modalImage.src = src;
+            modalImage.alt = alt;
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            modalImage.src = '';
+            modalImage.alt = '';
+        }
+
+        function showPrev() {
+            currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+            modalImage.src = galleryImages[currentIndex].src;
+            modalImage.alt = galleryImages[currentIndex].alt;
+        }
+
+        function showNext() {
+            currentIndex = (currentIndex + 1) % galleryImages.length;
+            modalImage.src = galleryImages[currentIndex].src;
+            modalImage.alt = galleryImages[currentIndex].alt;
+        }
+
+        modalClose.addEventListener('click', closeModal);
+        modalPrev.addEventListener('click', showPrev);
+        modalNext.addEventListener('click', showNext);
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
