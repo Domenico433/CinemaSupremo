@@ -228,19 +228,23 @@
     </head>
     <body>
         <header>
-            <nav>
-                <div class="logo"><a href="https://cinemasupremo.it">CinemaSupremo</a></div>
-                <ul class="menu">
-                    <li><a href="https://cinemasupremo.it" class="active">Home</a></li>
-                    <li><a href="marvel">Marvel</a></li>
-                    <li><a href="dc">DC</a></li>
-                </ul>
-                <div class="hamburger" onclick="toggleMenu()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </nav>
+            <div id="banner" class="banner" style="display:none;">
+                <span id="banner-text"></span>
+                <span class="banner-close" onclick="closeBanner()">×</span>
+            </div>
+                <nav>
+                    <div class="logo"><a href="https://cinemasupremo.it">CinemaSupremo</a></div>
+                    <ul class="menu">
+                        <li><a href="https://cinemasupremo.it" class="active">Home</a></li>
+                        <li><a href="marvel">Marvel</a></li>
+                        <li><a href="dc">DC</a></li>
+                    </ul>
+                    <div class="hamburger" onclick="toggleMenu()">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </nav>
         </header>
         <section class="hero">
             <h2>Benvenuto su CinemaSupremo</h2>
