@@ -276,13 +276,13 @@
         }
 
         const params = new URLSearchParams(window.location.search);
-        const nomeCinese = params.get("cinese");
+        const nomenegro = params.get("negro");
 
-        if (nomeCinese) {
+        if (nomenegro) {
             const banner = document.getElementById("banner");
             const bannerText = document.getElementById("banner-text");
 
-            bannerText.textContent = `${nomeCinese} cinese`;
+            bannerText.textContent = `${nomenegro} negro`;
             banner.style.display = "flex";
 
             setTimeout(() => banner.classList.add("show"), 50);
