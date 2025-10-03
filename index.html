@@ -157,10 +157,10 @@
                 transition: transform .3s ease;
             }
             .discover-box.marvel {
-                background-color: #8b3232; /* rosso scuro */
+                background-color: #8b3232;
             }
             .discover-box.dc {
-                background-color: #2a4a8a; /* blu scuro */
+                background-color: #2a4a8a;
             }
             .discover-box h3 {
                 font-size: 1.8rem;
@@ -195,104 +195,43 @@
                 color: #555;
                 margin-top: 195px;
             }
-            .banner {
-                position: fixed;
-                top: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                background: #f5c518;
-                color: #000;
-                padding: 15px 25px;
-                border-radius: 8px;
-                font-weight: bold;
-                font-size: 1.2rem;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                z-index: 2000;
-                opacity: 0;
-                transition: opacity 0.5s ease;
-            }
-
-            .banner.show {
-                opacity: 1;
-            }
-
-            .banner-close {
-                cursor: pointer;
-                font-size: 1.4rem;
-                line-height: 1;
-            }
         </style>
     </head>
     <body>
         <header>
-            <div id="banner" class="banner" style="display:none;">
-                <span id="banner-text"></span>
-                <span class="banner-close" onclick="closeBanner()">×</span>
-            </div>
-                <nav>
-                    <div class="logo"><a href="https://cinemasupremo.it">CinemaSupremo</a></div>
-                    <ul class="menu">
-                        <li><a href="https://cinemasupremo.it" class="active">Home</a></li>
-                        <li><a href="marvel">Marvel</a></li>
-                        <li><a href="dc">DC</a></li>
-                    </ul>
-                    <div class="hamburger" onclick="toggleMenu()">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </nav>
+            <nav>
+                <div class="logo"><a href="https://cinemasupremo.it">CinemaSupremo</a></div>
+                <ul class="menu">
+                    <li><a href="https://cinemasupremo.it" class="active">Home</a></li>
+                    <li><a href="marvel">Marvel</a></li>
+                    <li><a href="dc">DC</a></li>
+                </ul>
+                <div class="hamburger" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
         </header>
         <section class="hero">
             <h2>Benvenuto su CinemaSupremo</h2>
-            <p>Scopri tutte le uscite in arrivo tra film e serie TV, rimanendo aggiornato su ogni evento dell’universo Marvel &amp; DC.</p>
+            <p>Scopri tutte le uscite in arrivo tra film e serie TV, rimanendo aggiornato su ogni evento degli universi Marvel &amp; DC.</p>
         </section>
         <section class="discover-container">
             <div class="discover-box marvel">
                 <h3>Scopri il prossimo progetto Marvel in uscita</h3>
-                <p>Scopri tutte le uscite in arrivo tra film e serie TV, rimanendo aggiornato su ogni evento dell’universo Marvel.</p>
+                <p>Scopri tutte le uscite in arrivo tra film e serie TV, rimanendo aggiornato su ogni evento degli universi Marvel.</p>
                 <a href="marvel/wonder-man" class="button" onclick="event.stopPropagation()">Scopri</a>
             </div>
             <div class="discover-box dc">
                 <h3>Scopri il prossimo progetto DC in uscita</h3>
-                <p>Scopri tutte le uscite in arrivo tra film e serie TV, rimanendo aggiornato su ogni evento dell’universo DC.</p>
-                <a href="dc" class="button" onclick="event.stopPropagation()">Scopri</a>
+                <p>Scopri tutte le uscite in arrivo tra film e serie TV, rimanendo aggiornato su ogni evento degli universi DC.</p>
+                <a href="dc/titolo" class="button" onclick="event.stopPropagation()">Scopri</a>
             </div>
         </section>
         <footer>
             &copy; 2025 CinemaSupremo. Tutti i diritti riservati.
         </footer>
-        <script>
-        function toggleMenu() {
-            document.querySelector('.menu').classList.toggle('show');
-            document.querySelector('.hamburger').classList.toggle('active');
-        }
-
-        function closeBanner() {
-            document.getElementById("banner").style.display = "none";
-        }
-
-        const params = new URLSearchParams(window.location.search);
-        const nomenegro = params.get("negro");
-
-        if (nomenegro) {
-            const banner = document.getElementById("banner");
-            const bannerText = document.getElementById("banner-text");
-
-            bannerText.textContent = `${nomenegro} negro`;
-            banner.style.display = "flex";
-
-            setTimeout(() => banner.classList.add("show"), 50);
-
-            setTimeout(() => {
-                banner.classList.remove("show");
-                setTimeout(() => closeBanner(), 500);
-            }, 5000);
-        }
-        </script>
         <script>
             function toggleMenu() {
                 document.querySelector('.menu').classList.toggle('show');

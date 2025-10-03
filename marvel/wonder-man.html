@@ -1,192 +1,353 @@
 <!DOCTYPE html>
 <html lang="it">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>CinemaSupremo - Pagina in lavorazione</title>
-        <link rel="icon" type="image/png" href="../favicon.png">
-        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-            body {
-                font-family: 'Orbitron', sans-serif;
-                background: #0d0d0d;
-                color: #ddd;
-                min-height: 100vh;
-                display: flex;
-                flex-direction: column;
-            }
-            header {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                background: #121212;
-                padding: 15px 30px;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, .9);
-                z-index: 1000;
-            }
-            nav {
-                max-width: 1200px;
-                margin: auto;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-            .logo a {
-                color: #fff;
-                font-size: 1.8rem;
-                font-weight: bold;
-                text-decoration: none;
-                transition: color .3s;
-            }
-            .logo a:hover {
-                color: #e23636;
-            }
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CinemaSupremo - Wonder Man</title>
+    <link rel="icon" type="image/png" href="../favicon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background: #0d0d0d;
+            color: #ddd;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        header {
+            position: fixed; top: 0; left: 0; width: 100%;
+            background: #121212;
+            padding: 15px 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+        }
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo a {
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .logo a:hover { color: #e23636; }
+        .menu {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+        .menu li a {
+            color: #ddd;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+        .menu li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #e23636;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        .menu li a:hover::after,
+        .menu li a.active::after { width: 100%; }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            width: 25px; height: 20px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            height: 3px;
+            background: #ddd;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        @media (max-width: 768px) {
             .menu {
-                list-style: none;
-                display: flex;
-                gap: 25px;
-            }
-            .menu li a {
-                color: #ddd;
-                text-decoration: none;
-                font-weight: 500;
-                position: relative;
-                padding: 5px 0;
-                transition: color .3s;
-            }
-            .menu li a:hover::after,
-            .menu li a.active::after {
-                width: 100%;
-            }
-            .menu li a::after {
-                content: '';
-                position: absolute;
-                width: 0;
-                height: 2px;
-                background: #e23636;
-                bottom: 0;
-                left: 0;
-                transition: width .3s;
-            }
-            .hamburger {
                 display: none;
+                position: absolute;
+                top: 60px; right: 30px;
+                background: #222;
                 flex-direction: column;
-                gap: 5px;
-                width: 25px;
-                height: 20px;
-                cursor: pointer;
+                padding: 15px;
+                border-radius: 8px;
             }
-            .hamburger span {
-                height: 3px;
-                background: #ddd;
-                border-radius: 2px;
-                transition: all .3s;
-                transform-origin: center;
+            .menu.show { display: flex; }
+            .hamburger { display: flex; }
+        }
+        .back-button-top {
+            position: absolute;
+            top: 20px; left: 25px;
+            z-index: 900;
+        }
+        .back-button-top button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-button-top button svg {
+            width: 42px;
+            height: 42px;
+            stroke: white;
+            fill: none;
+            transition: stroke 0.3s, transform 0.3s;
+        }
+        .back-button-top button:hover svg {
+            stroke: #e23636;
+            transform: scale(1.1);
+        }
+        .hero {
+            margin: 120px auto 40px auto;
+            max-width: 900px;
+            padding: 20px;
+            background: linear-gradient(to right, #151515, #300000);
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+        .hero img { max-width: 300px; margin-bottom: 10px; }
+        .hero p {
+            color: #ccc;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .details {
+            max-width: 700px;
+            margin: 30px auto;
+            background: #1a1a1a;
+            border-radius: 15px;
+            padding: 30px 35px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+            color: #bbb;
+            font-size: 1.05rem;
+        }
+        .details h2 {
+            color: #e23636;
+            margin-bottom: 25px;
+            font-size: 1.9rem;
+            text-align: center;
+        }
+        .details p { margin-bottom: 14px; }
+        .gallery {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 25px 30px;
+            background: #1a1a1a;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+            color: #e23636;
+        }
+        .gallery h2 {
+            margin-bottom: 25px;
+            font-size: 2rem;
+            text-align: center;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .gallery-grid img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .gallery-grid img:hover { transform: scale(1.07); }
+        footer {
+            background: #121212;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 40px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0;
+            width: 100vw; height: 100vh;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            max-width: 90vw; max-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content img {
+            max-width: 100%; max-height: 100%;
+            object-fit: contain;
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px; right: 40px;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        .modal-arrow {
+            position: absolute;
+            top: 50%;
+            color: #fff;
+            font-size: 3rem;
+            cursor: pointer;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 50%;
+            padding: 10px;
+        }
+        .modal-arrow.left { left: 20px; }
+        .modal-arrow.right { right: 20px; }
+        @media (max-width: 768px) {
+            .gallery-grid img {
+                pointer-events: none;
+                opacity: 0.9;
             }
-            .hamburger.active span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-            .hamburger.active span:nth-child(2) {
-                opacity: 0;
-            }
-            .hamburger.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(5px, -5px);
-            }
-            @media (max-width: 768px) {
-                .menu {
-                    display: none;
-                    position: absolute;
-                    top: 60px;
-                    right: 30px;
-                    background: #222;
-                    flex-direction: column;
-                    padding: 15px;
-                    border-radius: 8px;
-                }
-                .menu.show {
-                    display: flex;
-                }
-                .hamburger {
-                    display: flex;
-                }
-            }
-            .hero {
-                margin-top: 100px;
-                flex: 1;
-                background: linear-gradient(to right, #151515, #300000);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                padding: 60px 20px;
-            }
-            .hero h1 {
-                color: #e23636;
-                font-size: 3rem;
-                margin-bottom: 20px;
-            }
-            .hero p {
-                font-size: 1.2rem;
-                color: #ccc;
-                max-width: 600px;
-                margin-bottom: 30px;
-            }
-            .loader {
-                margin: 0 auto;
-                border: 6px solid #1a1a1a;
-                border-top: 6px solid #e23636;
-                border-radius: 50%;
-                width: 60px;
-                height: 60px;
-                animation: spin 1s linear infinite;
-            }
-            @keyframes spin {
-                to { transform: rotate(360deg); }
-            }
-            footer {
-                background: #121212;
-                text-align: center;
-                padding: 20px;
-                font-size: .9rem;
-                color: #555;
-                margin-top: 35px;
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <nav>
-                <div class="logo"><a href="https://cinemasupremo.it">CinemaSupremo</a></div>
-                <ul class="menu">
-                    <li><a href="https://cinemasupremo.it">Home</a></li>
-                    <li><a href="../marvel" class="active">Marvel</a></li>
-                    <li><a href="../dc">DC</a></li>
-                </ul>
-                <div class="hamburger" onclick="toggleMenu()">
-                    <span></span><span></span><span></span>
-                </div>
-            </nav>
-        </header>
-        <section class="hero">
-            <h1>Pagina in lavorazione</h1>
-            <p>Stiamo preparando qualcosa di straordinario. Torna presto per scoprire tutte le novità!</p>
-            <div class="loader"></div>
-        </section>
-        <footer>
-            &copy; 2025 CinemaSupremo. Tutti i diritti riservati.
-        </footer>
-        <script>
-            function toggleMenu() {
-                document.querySelector('.menu').classList.toggle('show');
-                document.querySelector('.hamburger').classList.toggle('active');
-            }
-        </script>
-    </body>
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <div class="logo"><a href="https://cinemasupremo.it">CinemaSupremo</a></div>
+        <ul class="menu">
+            <li><a href="https://cinemasupremo.it">Home</a></li>
+            <li><a href="../marvel" class="active">Marvel</a></li>
+            <li><a href="../dc">DC</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+</header>
+<main>
+    <section class="hero">
+        <div class="back-button-top">
+            <button onclick="history.back()" aria-label="Torna indietro">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 8 8 12 12 16"/>
+                    <line x1="16" y1="12" x2="8" y2="12"/>
+                </svg>
+            </button>
+        </div>
+        <img src="marvel-immagini/wonder-man/wonder-man-logo.png" alt="Logo Wonder Man" />
+        <p>Preparati a scoprire Simon Williams, la star che non sapevi ti servisse.</p>
+    </section>
+    <section class="details">
+        <h2>Dettagli</h2>
+        <p>Genere: Fantascienza e Supereroi.</p>
+        <p>Data di uscita: Dicembre 2025 (Italia).</p>
+        <p>Durata: Serie TV da 8 Episodi di 30 Minuti (Circa).</p>
+        <p>Regista: Destin Daniel Cretton e Stella Meghie.</p>
+        <p>Produzione: Marvel Television</p>
+        <p>Cast: Yahya Abdul-Mateen II, Demetrius Grosse, Ben Kingsley, Ed Harris, Lauren Glazier, Arian Moayed e altri.</p>
+        <p>Trama: Simon Williams è un attore e stuntman con superpoteri, che vorrebbe diventare una star a Hollywood in un mondo in cui esistono veri supereroi.</p>
+    </section>
+    <section class="gallery">
+        <h2>Galleria Immagini</h2>
+        <div class="gallery-grid" id="gallery">
+            <img src="marvel-immagini/wonder-man/immagine-01.png" alt="Wonder Man 1">
+            <img src="marvel-immagini/wonder-man/immagine-02.png" alt="Wonder Man 2">
+            <img src="marvel-immagini/wonder-man/immagine-03.png" alt="Wonder Man 3">
+        </div>
+    </section>
+</main>
+<div class="modal" id="modal" aria-hidden="true" role="dialog" aria-label="Immagine ingrandita">
+    <span class="modal-close" id="modalClose" role="button" aria-label="Chiudi">&times;</span>
+    <span class="modal-arrow left" id="modalPrev" role="button" aria-label="Immagine precedente">&#10094;</span>
+    <span class="modal-arrow right" id="modalNext" role="button" aria-label="Immagine successiva">&#10095;</span>
+    <div class="modal-content">
+        <img src="" alt="" id="modalImage" />
+    </div>
+</div>
+<footer>© 2025 CinemaSupremo - Tutti i diritti riservati</footer>
+<script>
+    function toggleMenu() {
+        document.querySelector('.menu').classList.toggle('show');
+        document.querySelector('.hamburger').classList.toggle('active');
+    }
+
+    const gallery = document.getElementById('gallery');
+    const modal = document.getElementById('modal');
+    const modalImage = document.getElementById('modalImage');
+    const modalClose = document.getElementById('modalClose');
+    const modalPrev = document.getElementById('modalPrev');
+    const modalNext = document.getElementById('modalNext');
+    const images = Array.from(gallery.querySelectorAll('img'));
+    let currentIndex = 0;
+
+    function openModal(i) {
+        if (window.innerWidth <= 768) return; // Non aprire su mobile per UX
+        currentIndex = i;
+        modalImage.src = images[i].src;
+        modalImage.alt = images[i].alt;
+        modal.style.display = 'flex';
+        modal.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeModal() {
+        modal.style.display = 'none';
+        modalImage.src = '';
+        modalImage.alt = '';
+        modal.setAttribute('aria-hidden', 'true');
+    }
+
+    function showPrev() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        modalImage.src = images[currentIndex].src;
+        modalImage.alt = images[currentIndex].alt;
+    }
+
+    function showNext() {
+        currentIndex = (currentIndex + 1) % images.length;
+        modalImage.src = images[currentIndex].src;
+        modalImage.alt = images[currentIndex].alt;
+    }
+
+    images.forEach((img, i) => img.addEventListener('click', () => openModal(i)));
+    modalClose.addEventListener('click', closeModal);
+    modalPrev.addEventListener('click', showPrev);
+    modalNext.addEventListener('click', showNext);
+
+    modal.addEventListener('click', e => {
+        if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', e => {
+        if (modal.style.display === 'flex') {
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowLeft') showPrev();
+            if (e.key === 'ArrowRight') showNext();
+        }
+    });
+</script>
+</body>
 </html>
