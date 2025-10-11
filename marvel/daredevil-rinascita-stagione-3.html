@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>CinemaSupremo - Daredevil: Rinascita Stagione 2</title>
+        <link rel="icon" type="image/png" href="../favicon.png">
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-family: 'Orbitron', sans-serif;
+                background: #0d0d0d;
+                color: #ddd;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+            }
+            header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background: #121212;
+                padding: 15px 30px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, .9);
+                z-index: 1000;
+            }
+            nav {
+                max-width: 1200px;
+                margin: auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .logo a {
+                color: #fff;
+                font-size: 1.8rem;
+                font-weight: bold;
+                text-decoration: none;
+                transition: color .3s;
+            }
+            .logo a:hover {
+                color: #e23636;
+            }
+            .menu {
+                list-style: none;
+                display: flex;
+                gap: 25px;
+            }
+            .menu li a {
+                color: #ddd;
+                text-decoration: none;
+                font-weight: 500;
+                position: relative;
+                padding: 5px 0;
+                transition: color .3s;
+            }
+            .menu li a:hover::after,
+            .menu li a.active::after {
+                width: 100%;
+            }
+            .menu li a::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                background: #e23636;
+                bottom: 0;
+                left: 0;
+                transition: width .3s;
+            }
+            .hamburger {
+                display: none;
+                flex-direction: column;
+                gap: 5px;
+                width: 25px;
+                height: 20px;
+                cursor: pointer;
+            }
+            .hamburger span {
+                height: 3px;
+                background: #ddd;
+                border-radius: 2px;
+                transition: all .3s;
+                transform-origin: center;
+            }
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+            @media (max-width: 768px) {
+                .menu {
+                    display: none;
+                    position: absolute;
+                    top: 60px;
+                    right: 30px;
+                    background: #222;
+                    flex-direction: column;
+                    padding: 15px;
+                    border-radius: 8px;
+                }
+                .menu.show {
+                    display: flex;
+                }
+                .hamburger {
+                    display: flex;
+                }
+            }
+            .hero {
+                margin-top: 100px;
+                flex: 1;
+                background: linear-gradient(to right, #151515, #300000);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 60px 20px;
+            }
+            .hero h1 {
+                color: #e23636;
+                font-size: 3rem;
+                margin-bottom: 20px;
+            }
+            .hero p {
+                font-size: 1.2rem;
+                color: #ccc;
+                max-width: 600px;
+                margin-bottom: 30px;
+            }
+            .loader {
+                margin: 0 auto;
+                border: 6px solid #1a1a1a;
+                border-top: 6px solid #e23636;
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                animation: spin 1s linear infinite;
+            }
+            @keyframes spin {
+                to { transform: rotate(360deg); }
+            }
+            footer {
+                background: #121212;
+                text-align: center;
+                padding: 20px;
+                font-size: .9rem;
+                color: #555;
+                margin-top: 35px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="logo"><a href="https://cinemasupremo.it">CinemaSupremo</a></div>
+                <ul class="menu">
+                    <li><a href="https://cinemasupremo.it">Home</a></li>
+                    <li><a href="../marvel" class="active">Marvel</a></li>
+                    <li><a href="../dc">DC</a></li>
+                </ul>
+                <div class="hamburger" onclick="toggleMenu()">
+                    <span></span><span></span><span></span>
+                </div>
+            </nav>
+        </header>
+        <section class="hero">
+            <h1>Pagina in lavorazione</h1>
+            <p>Stiamo preparando qualcosa di straordinario. Torna presto per scoprire tutte le novità!</p>
+            <div class="loader"></div>
+        </section>
+        <footer>
+            &copy; 2025 CinemaSupremo. Tutti i diritti riservati.
+        </footer>
+        <script>
+            function toggleMenu() {
+                document.querySelector('.menu').classList.toggle('show');
+                document.querySelector('.hamburger').classList.toggle('active');
+            }
+        </script>
+    </body>
+</html>
